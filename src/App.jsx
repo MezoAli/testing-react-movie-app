@@ -41,7 +41,6 @@ function App() {
         `https://api.themoviedb.org/3/search/movie?api_key=52ef927bbeb21980cd91386a29403c78&query=${word}&language=ar`
       );
       setMovies(res.data.results);
-      console.log(res);
       setpageCount(res.data.total_pages);
     }
   };

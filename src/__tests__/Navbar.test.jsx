@@ -2,8 +2,8 @@ import { screen, render } from "@testing-library/react";
 import Navbar from "../components/NavBar";
 import { describe, expect, vi } from "vitest";
 import userEvent from "@testing-library/user-event";
-import { renderWithRedux } from "./ReduxConfig";
-import { createMSW } from "./MSWConfig";
+import { renderWithRedux } from "./utils/ReduxConfig";
+import { createMSW } from "./utils/MSWConfig";
 import App from "../App";
 
 createMSW([

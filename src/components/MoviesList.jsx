@@ -8,7 +8,7 @@ const MoviesList = ({ movies, getPage, pageCount }) => {
       {movies.length >= 1 ? (
         movies.map((mov) => {
           return (
-            <div data-testId="movieCard" key={mov.id}>
+            <div data-testid="movieCard" key={mov.id}>
               <CardMovie mov={mov} />
             </div>
           );
