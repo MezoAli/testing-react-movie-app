@@ -14,7 +14,9 @@ const MoviesList = ({ movies, getPage, pageCount }) => {
           );
         })
       ) : (
-        <h2 className="text-center p-5">لا يوجد افلام...</h2>
+        <h2 className="text-center p-5" data-testid="noMoviesMessage">
+          لا يوجد افلام...
+        </h2>
       )}
 
       {movies.length >= 1 ? (
