@@ -28,7 +28,7 @@ createMSW([
 ]);
 
 describe("testing navbar ui", () => {
-  test("testing navbar", () => {
+  test("testing navbar actually present", () => {
     renderWithRedux(<Navbar />);
     const logo = screen.getByTestId("logo");
     const searchInput = screen.getByTestId("searchInput");
