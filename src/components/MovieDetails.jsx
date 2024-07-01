@@ -12,7 +12,7 @@ const MovieDetails = () => {
       `https://api.themoviedb.org/3/movie/${param.id}?api_key=52ef927bbeb21980cd91386a29403c78&language=ar`
     );
     setMovie(res.data);
-    console.log(res);
+    // console.log(res);
   };
   useEffect(() => {
     getMovieDetails();
@@ -52,7 +52,9 @@ const MovieDetails = () => {
               <p className="card-text-title border-bottom">القصة:</p>
             </div>
             <div className="text-end px-2">
-              <p className="card-text-story">{movie.overview}</p>
+              <p className="card-text-story" data-testid="overview">
+                {movie.overview}
+              </p>
             </div>
           </div>
         </Col>
@@ -72,7 +74,7 @@ const MovieDetails = () => {
               عوده للرئيسيه
             </button>
           </Link>
-          <a href={movie.homepage}>
+          <a href={movie.homepage} data-testid="homepage">
             <button
               style={{ backgroundColor: "#b45b35", border: "none" }}
               className="btn btn-primary"
