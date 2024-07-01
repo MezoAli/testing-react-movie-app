@@ -53,5 +53,7 @@ describe("testing movieList component", () => {
     await userEvents.type(searchInput, "sdkdkaksja");
     const movieCards = screen.queryAllByTestId("movieCard");
     expect(movieCards).toHaveLength(0);
+    const noMoviesMessage = screen.getByTestId("noMoviesMessage");
+    expect(noMoviesMessage).toBeInTheDocument();
   });
 });
