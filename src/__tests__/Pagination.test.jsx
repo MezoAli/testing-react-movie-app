@@ -1,9 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { findByTestId, render, screen } from "@testing-library/react";
 import { describe, expect, vi } from "vitest";
 import PaginationComponent from "../components/Pagination";
 import { renderWithRedux } from "./utils/ReduxConfig";
 import App from "../App";
 import { createMSW } from "./utils/MSWConfig";
+import userEvent from "@testing-library/user-event";
 
 createMSW([
   {
@@ -29,5 +30,17 @@ describe("testing pagination component", () => {
     renderWithRedux(<App />);
     const buttons = screen.queryAllByRole("button");
     expect(buttons).toHaveLength(0);
+    const noMoviesMessage = await screen.findByTestId("noMoviesMessage");
+    expect(noMoviesMessage).toBeInTheDocument();
+  });
+
+  test("testing pagination click logic", async () => {
+    const getPage = vi.fn();
+    const pagesCount = 10;
+    render(<PaginationComponent getPage={getPage} pageCount={pagesCount} />);
+    const buttons = await screen.findAllByRole("button");
+    await userEvent.click(buttons[2]);
+    expect(getPage).toHaveBeenCalledTimes(1);
+    expect(buttons[2]).toHaveAttribute("aria-current", "page");
   });
 });
